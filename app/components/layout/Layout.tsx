@@ -2,11 +2,11 @@ import { Outlet } from "react-router";
 
 export default function Layout() {
   return (
-    <main className="w-full h-screen ">
-      <header className="w-full h-[8%]  max-h-[85px] bg-white shadow "></header>
-      <div className=" w-full h-[92vh] flex  gap-2">
-        <NavMenu />
-        <div>
+    <main className="w-full h-screen flex ">
+      <NavMenu />
+      <div className="w-full h-full ">
+        <header className="w-full h-[80px] bg-white shadow "></header>
+        <div className="overflow-y-auto">
           <Outlet />
         </div>
       </div>
@@ -16,6 +16,10 @@ export default function Layout() {
 
 const NavMenu = () => {
   return (
-    <nav className="w-[18%] h-full bg-gray-200 shadow">navigation par profile</nav>
+    <nav className="w-[18%] h-full bg-gray-200 shadow">
+      <div className="w-full h-[80px] bg-white/50 shadow "></div>    
+
+      navigation par profile
+    </nav>
   );
 };
