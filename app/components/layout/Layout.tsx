@@ -3,8 +3,8 @@ import { Outlet } from "react-router";
 export default function Layout() {
   return (
     <main className="w-full h-screen ">
-      <header className="w-full h-[80px] bg-white shadow "></header>
-      <div className=" w-full h-[calc(100vh-80px)]  flex  gap-2">
+      <header className="w-full h-[8%] bg-white shadow "></header>
+      <div className=" w-full h-[calc(100vh-8%)]  flex  gap-2">
         <NavMenu />
         <div>
           <Outlet />
@@ -16,6 +16,6 @@ export default function Layout() {
 
 const NavMenu = () => {
   return (
-    <nav className="w-[320px] h-full bg-gray-200 shadow">navigation par profile</nav>
+    <nav className="w-[18%] h-full bg-gray-200 shadow">navigation par profile</nav>
   );
 };
