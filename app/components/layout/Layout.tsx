@@ -4,7 +4,7 @@ export default function Layout() {
   return (
     <main className="w-full h-screen ">
       <header className="w-full h-[8%]  max-h-[85px] bg-white shadow "></header>
-      <div className=" w-full h-[calc(100vh-8%)]  max-h-[calc(100vh-85px)] flex  gap-2">
+      <div className=" w-full h-[92vh] flex  gap-2">
         <NavMenu />
         <div>
           <Outlet />
