@@ -1,6 +1,7 @@
 import { Form, redirect, useActionData, useLoaderData } from "react-router";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { getUserFromSession, createUserSession } from "../../server/auth/session.server";
+import { getRedirectPath } from "../../server/auth/redirect.server";
 
 // Simuler une base de données d'utilisateurs
 const USERS_DB = {
@@ -81,20 +82,6 @@ export async function action({ request }: ActionFunctionArgs) {
   return createUserSession(user, finalRedirectTo);
 }
 
-function getRedirectPath(role: string): string {
-  switch (role) {
-    case "super_admin":
-      return "/master";
-    case "admin":
-      return "/admin";
-    case "partener":
-      return "/partener";
-    case "personnel":
-      return "/personnel";
-    default:
-      return "/";
-  }
-}
 
 export default function Login() {
   const { message } = useLoaderData<typeof loader>();

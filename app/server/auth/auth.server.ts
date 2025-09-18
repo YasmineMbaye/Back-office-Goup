@@ -27,7 +27,10 @@ export async function requireAuth(
   }
 
   if (!isAuthorized) {
-    throw new Response("Non autorisé", { status: 403 });
+    throw new Response(null, {
+      status: 403,
+      headers: { Location: "/errors/403" },
+    });
   }
 
   return { user, isAuthorized };

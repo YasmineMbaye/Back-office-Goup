@@ -2,6 +2,7 @@ import { NavLink, Outlet, useLoaderData, Form } from "react-router";
 import { LogOut, User } from 'lucide-react';
 import { getNavigationForRole } from '../../config/navigation';
 import { requireUser } from '../../server/auth/auth.server';
+import { RouteGuard } from '../auth/route-guard';
 
 export const loader = requireUser;
 
@@ -13,17 +14,20 @@ type NavItemProps = {
 }
 
 export default function Layout() {
+  const { user } = useLoaderData<typeof loader>();
+  
   return (
-    <main className="w-full h-screen flex bg-gray-50">
-      <NavMenu />
-      <div className="w-full h-full">
-        <Header />
-        <div className="overflow-y-auto h-[calc(100vh-80px)] bg-gray-50">
-          <Outlet />
+    <RouteGuard userRole={user.role}>
+      <main className="w-full h-screen flex bg-gray-50">
+        <NavMenu />
+        <div className="w-full h-full">
+          <Header />
+          <div className="overflow-y-auto h-[calc(100vh-80px)] bg-gray-50">
+            <Outlet />
+          </div>
         </div>
-      </div>
-
-    </main>
+      </main>
+    </RouteGuard>
   );
 }
 
