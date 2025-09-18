@@ -1,53 +1,41 @@
-import { createContext, useContext, useState } from 'react';
-
-export interface Currency {
-  code: string;
-  symbol: string;
-  name: string;
-  rate: number; // Taux par rapport à l'EUR
-}
-
-export const AVAILABLE_CURRENCIES: Currency[] = [
-  { code: 'EUR', symbol: '€', name: 'Euro', rate: 1 },
-  { code: 'USD', symbol: '$', name: 'Dollar US', rate: 1.08 },
-  { code: 'GBP', symbol: '£', name: 'Livre Sterling', rate: 0.86 },
-  { code: 'JPY', symbol: '¥', name: 'Yen Japonais', rate: 161.50 },
-  { code: 'CAD', symbol: 'C$', name: 'Dollar Canadien', rate: 1.48 },
-  { code: 'AUD', symbol: 'A$', name: 'Dollar Australien', rate: 1.64 },
-  { code: 'CHF', symbol: 'CHF', name: 'Franc Suisse', rate: 0.94 },
-  { code: 'CNY', symbol: '¥', name: 'Yuan Chinois', rate: 7.83 }
-];
+import { createContext, useContext } from 'react';
+import { useFetcher } from 'react-router';
+import type { Currency } from '../server/data/currency.server';
+import { formatAmount as serverFormatAmount, convertAmount as serverConvertAmount } from '../server/data/currency.server';
 
 interface CurrencyContextType {
   currency: Currency;
   setCurrency: (currency: Currency) => void;
   formatAmount: (amount: number) => string;
   convertAmount: (amount: number, fromCurrency?: Currency) => number;
+  currencies: Currency[];
 }
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
 
 interface CurrencyProviderProps {
   children: React.ReactNode;
+  currencies: Currency[];
   initialCurrency?: Currency;
 }
 
-export function CurrencyProvider({ children, initialCurrency = AVAILABLE_CURRENCIES[0] }: CurrencyProviderProps) {
-  const [currency, setCurrency] = useState<Currency>(initialCurrency);
+export function CurrencyProvider({ children, currencies, initialCurrency }: CurrencyProviderProps) {
+  const fetcher = useFetcher();
+  const currency = initialCurrency || currencies[0];
 
-  const formatAmount = (amount: number): string => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: currency.code,
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 2,
-    }).format(amount);
+  const setCurrency = (newCurrency: Currency) => {
+    fetcher.submit(
+      { currencyCode: newCurrency.code },
+      { method: 'post', action: '/api/set-currency' }
+    );
   };
 
-  const convertAmount = (amount: number, fromCurrency: Currency = AVAILABLE_CURRENCIES[0]): number => {
-    // Convertir d'abord vers EUR, puis vers la devise cible
-    const eurAmount = amount / fromCurrency.rate;
-    return eurAmount * currency.rate;
+  const formatAmount = (amount: number): string => {
+    return serverFormatAmount(amount, currency);
+  };
+
+  const convertAmount = (amount: number, fromCurrency: Currency = currencies[0]): number => {
+    return serverConvertAmount(amount, fromCurrency, currency);
   };
 
   return (
@@ -55,7 +43,8 @@ export function CurrencyProvider({ children, initialCurrency = AVAILABLE_CURRENC
       currency,
       setCurrency,
       formatAmount,
-      convertAmount
+      convertAmount,
+      currencies
     }}>
       {children}
     </CurrencyContext.Provider>
