@@ -3,9 +3,13 @@ import superAdminRoutes from "./routes/super_admin_route";
 import partenerRoutes from "./routes/partener_routes";
 import personnelRoutes from "./routes/personnel_routes";
 import authRoutes from "./routes/auth.routes";
+import currencyRoutes from "./routes/currency.routes";
 import { layout, route, type RouteConfig } from "@react-router/dev/routes";
 
 export default [
+  // Routes API
+  ...currencyRoutes,
+  
   // Routes publiques (sans layout)
   ...authRoutes,
   route("/", "./pages/home.tsx"),

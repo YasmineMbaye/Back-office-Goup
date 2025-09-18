@@ -1,19 +1,19 @@
 import { Form, useActionData, useLoaderData } from "react-router";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "react-router";
 import { requireSuperAdmin } from "../../server/auth/auth.server";
-import { AVAILABLE_CURRENCIES, type Currency } from "../../contexts/currency-context";
+import { AVAILABLE_CURRENCIES, getCurrencies } from "../../server/data/currency.server";
 import { Check, Globe, Settings as SettingsIcon } from "lucide-react";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const { user } = await requireSuperAdmin({ request });
   
-  // En production, récupérer depuis la base de données
-  const currentCurrency = AVAILABLE_CURRENCIES[0]; // Default EUR
+  const availableCurrencies = await getCurrencies();
+  const currentCurrency = availableCurrencies[0]; // Default EUR
   
   return {
     user,
     currentCurrency,
-    availableCurrencies: AVAILABLE_CURRENCIES
+    availableCurrencies
   };
 }
 
