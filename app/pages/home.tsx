@@ -1,6 +1,7 @@
 import type { LoaderFunctionArgs } from "react-router";
 import { redirect } from "react-router";
 import { getUserFromSession } from "../server/auth/session.server";
+import { getRedirectPath } from "../server/auth/redirect.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const user = await getUserFromSession(request);
@@ -9,19 +10,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
     throw redirect("/login");
   }
 
-  // Rediriger selon le rôle
-  switch (user.role) {
-    case "super_admin":
-      throw redirect("/master");
-    case "admin":
-      throw redirect("/admin");
-    case "partener":
-      throw redirect("/partener");
-    case "personnel":
-      throw redirect("/personnel");
-    default:
-      throw redirect("/login");
-  }
+  // Rediriger selon le rôle vers le dashboard approprié
+  const dashboardPath = getRedirectPath(user.role);
+  throw redirect(dashboardPath);
 }
 
 export default function Home() {
