@@ -1,7 +1,8 @@
-import { index, prefix, type RouteConfig, } from "@react-router/dev/routes";
+import { index, prefix, route, type RouteConfig, } from "@react-router/dev/routes";
 
 export default [ 
     ...prefix("master",[
-        index("./pages/super_admin/home.tsx")
+        index("./pages/super_admin/home.tsx"),
+        route("settings", "./pages/super_admin/settings.tsx")
     ])
  ] satisfies RouteConfig;
