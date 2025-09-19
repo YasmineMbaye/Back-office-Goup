@@ -88,15 +88,15 @@ export default function Login() {
   const actionData = useActionData<typeof action>();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black">
-      <div className="max-w-md w-full space-y-8 p-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg">
         <div>
-          <img 
-            className="mx-auto h-12 w-auto" 
-            src="/app/assets/images/logo_dark_mode.png" 
-            alt="Logo" 
+          <img
+            className="mx-auto h-12 w-auto"
+            src="/app/assets/images/logo_dark_mode.png"
+            alt="Logo"
           />
-          <h2 className="mt-6 text-center text-4xl font-bold text-white">
+          <h2 className="mt-6 text-center text-4xl font-bold text-black">
             Connexion au Back-Office
           </h2>
         </div>
@@ -104,7 +104,7 @@ export default function Login() {
         <Form method="post" className="mt-8 space-y-6">
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-base font-medium text-gray-300 mb-3">
+              <label htmlFor="email" className="block text-base font-medium text-black mb-3">
                 Email
               </label>
               <input
@@ -113,12 +113,12 @@ export default function Login() {
                 type="email"
                 autoComplete="email"
                 required
-                className="w-full px-4 py-4 bg-gray-900 border border-gray-700 text-white text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-gray-400"
+                className="w-full px-4 py-4 bg-white border border-gray-300 text-black text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent placeholder-gray-500"
                 placeholder="Adresse email"
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-base font-medium text-gray-300 mb-3">
+              <label htmlFor="password" className="block text-base font-medium text-black mb-3">
                 Mot de passe
               </label>
               <input
@@ -127,14 +127,14 @@ export default function Login() {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="w-full px-4 py-4 bg-gray-900 border border-gray-700 text-white text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-gray-400"
+                className="w-full px-4 py-4 bg-white border border-gray-300 text-black text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent placeholder-gray-500"
                 placeholder="Mot de passe"
               />
             </div>
           </div>
 
           {actionData?.error && (
-            <div className="bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded-lg text-base text-center">
+            <div className="bg-red-50 border border-red-300 text-red-800 px-4 py-3 rounded-lg text-base text-center">
               {actionData.error}
             </div>
           )}
@@ -142,22 +142,22 @@ export default function Login() {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-4 px-6 text-base font-semibold rounded-lg text-black bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black transition-colors"
+              className="w-full flex justify-center py-4 px-6 text-base font-semibold rounded-lg text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transition-colors"
             >
               Se connecter
             </button>
           </div>
         </Form>
 
-        <div className="mt-8 p-6 bg-gray-900 rounded-lg border border-gray-700">
-          <p className="font-semibold text-gray-300 text-base mb-4">Comptes de test :</p>
+        <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+          <p className="font-semibold text-black text-base mb-4">Comptes de test :</p>
           <ul className="space-y-3 text-sm">
-            <li className="text-gray-400"><span className="text-white font-semibold">Super Admin:</span> superadmin@example.com</li>
-            <li className="text-gray-400"><span className="text-white font-semibold">Admin Région:</span> admin@example.com</li>
-            <li className="text-gray-400"><span className="text-white font-semibold">Partenaire:</span> partner@example.com</li>
-            <li className="text-gray-400"><span className="text-white font-semibold">Personnel:</span> personnel@example.com</li>
+            <li className="text-gray-600"><span className="text-black font-semibold">Super Admin:</span> superadmin@example.com</li>
+            <li className="text-gray-600"><span className="text-black font-semibold">Admin Région:</span> admin@example.com</li>
+            <li className="text-gray-600"><span className="text-black font-semibold">Partenaire:</span> partner@example.com</li>
+            <li className="text-gray-600"><span className="text-black font-semibold">Personnel:</span> personnel@example.com</li>
           </ul>
-          <p className="mt-4 text-sm text-gray-400">Mot de passe : <code className="bg-gray-800 px-2 py-1 rounded text-gray-300 font-mono text-sm">password123</code></p>
+          <p className="mt-4 text-sm text-gray-600">Mot de passe : <code className="bg-gray-200 px-2 py-1 rounded text-black font-mono text-sm">password123</code></p>
         </div>
       </div>
     </div>
