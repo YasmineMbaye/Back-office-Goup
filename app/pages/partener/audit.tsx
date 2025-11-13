@@ -1,11 +1,10 @@
 import { getDashboardData } from "../../server/data/dashboard.server";
-import { requireSuperAdmin } from "../../server/auth/auth.server";
+import { requirePartner } from "../../server/auth/auth.server";
 import { DashboardLayout } from "../../components/dashboard/dashboard-layout";
-import { RegionLayout } from "~/components/superadmin/Region-layout";
-import { formdialog as action} from "~/server/actions/currency.server";
-export {action}
+import AuditLayout from "~/components/partener/Audit-layout";
+
 export async function loader({ request }: { request: Request }) {
-  const { user } = await requireSuperAdmin({ request });
+  const { user } = await requirePartner({ request });
   const dashboardData = getDashboardData(user.role, user.region_id);
   
   return {
@@ -15,5 +14,5 @@ export async function loader({ request }: { request: Request }) {
 }
 
 export default function Home() {
-  return <RegionLayout title="Régions" role="super_admin" />;
+  return <AuditLayout title="Audits" role="partener" />;
 }

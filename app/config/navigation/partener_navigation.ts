@@ -4,18 +4,18 @@ import type { NavItem } from '../../types/navigation';
 export const partenerNavigation: NavItem[] = [
   {
     title: 'Dashboard',
-    path: '/partner',
+    path: '/partener',
     icon: LayoutDashboard,
     end: true
   },
   {
     title: 'Audits',
-    path: '/partner/audits',
+    path: '/partener/audits',
     icon: FileCheck
   },
   {
     title: 'Conformité',
-    path: '/partner/compliance',
+    path: '/partener/compliance',
     icon: Shield
   },
   {

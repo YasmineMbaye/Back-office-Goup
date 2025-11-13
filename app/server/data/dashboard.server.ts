@@ -17,6 +17,13 @@ export interface DashboardData {
   chartData: ChartData[];
   recentActivity: any[];
   kpis: any[];
+  recentActivityy:any[];
+   coordonnees:any[];
+   responsable :any[];
+   statistiques :any[];
+    ml :any[];
+     sn  :any[];
+
 }
 
 // Simuler un délai de chargement réseau
@@ -24,13 +31,13 @@ function delay(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export async function getDashboardData(role: UserRole, regionId?: string): Promise<DashboardData> {
+export async function getDashboardData(role: UserRole, regionId?: string, slug?:string): Promise<DashboardData> {
   // Simuler une latence réseau
   await delay(Math.random() * 1000 + 500);
   
   switch (role) {
     case "super_admin":
-      return getSuperAdminData();
+      return getSuperAdminData(slug);
     case "admin":
       return getAdminData(regionId);
     case "partener":
@@ -42,7 +49,137 @@ export async function getDashboardData(role: UserRole, regionId?: string): Promi
   }
 }
 
-function getSuperAdminData(): DashboardData {
+function getSuperAdminData(slug: string = "ml"): DashboardData {
+
+  const key = (slug || "ml") as keyof typeof orgs;
+  
+const orgs = {
+    sn: {
+      recentActivityy: [
+        { action: "Pays", region: "Sénégal", time: "Il y a 2h" },
+        { action: "Code", region: "sn", time: "Il y a 2h" },
+        { action: "Date de création", region: "01/01/2024", time: "Il y a 2h" },
+        { action: "Statut", region: "Actif", time: "Il y a 2h" }
+      ],
+      coordonnees: [
+        { action: "Adresse", value: "Dakar, Plateau", time: "Il y a 2h" },
+        { action: "Téléphone", value: "+221 77 123 45 67", time: "Il y a 2h" },
+        { action: "Email", value: "contact@go-up.sn", time: "Il y a 2h" },
+        { action: "Site web", value: "www.go-up.sn", time: "Il y a 2h" }
+      ],
+      responsable: [
+        { action: "Nom", value: "Mamadou Ndiaye", time: "Il y a 2h" },
+        { action: "Fonction", value: "Directeur régional", time: "Il y a 2h" },
+        { action: "Téléphone", value: "+221 77 987 65 43", time: "Il y a 2h" },
+        { action: "Email", value: "mamadou@go-up.sn", time: "Il y a 2h" }
+      ],
+      statistiques: [
+        { action: "Chauffeurs", value: "1200", time: "Il y a 2h" },
+        { action: "Clients", value: "15000", time: "Il y a 2h" },
+        { action: "Courses", value: "45000", time: "Il y a 2h" },
+        { action: "Revenus", value: "150 M FCFA", time: "Il y a 2h" }
+      ],
+      statut: [
+      {
+        title: "Chauffeurs",
+        value: 1200,
+        change: 8.2,
+        changeType: "increase"
+      },
+      {
+        title: "Clients",
+        value: "1500",
+        change: 12.5,
+        changeType: "increase"
+      },
+      {
+        title: "Revenue",
+        value: "€45.8M",
+        change: 15.3,
+        changeType: "increase"
+      },
+      {
+        title: "Course",
+        value: "30",
+        change: 0.1,
+        changeType: "increase"
+      }
+    ],
+    chartDataa: [
+      { name: "France", users: 450000, revenue: 12500000, trips: 85000 },
+      { name: "Allemagne", users: 380000, revenue: 9800000, trips: 72000 },
+      { name: "Espagne", users: 320000, revenue: 8200000, trips: 63000 },
+      { name: "Italie", users: 290000, revenue: 7500000, trips: 58000 },
+      { name: "UK", users: 410000, revenue: 11200000, trips: 78000 },
+      { name: "Pays-Bas", users: 180000, revenue: 4800000, trips: 35000 }
+    ],
+    },
+    ml: {
+      recentActivityy: [
+        { action: "Pays", region: "Mali", time: "Il y a 2h" },
+        { action: "Code", region: "ml", time: "Il y a 2h" },
+        { action: "Date de création", region: "15/02/2024", time: "Il y a 2h" },
+        { action: "Statut", region: "Actif", time: "Il y a 2h" }
+      ],
+      coordonnees: [
+        { action: "Adresse", value: "Bamako, Quartier Hippodrome", time: "Il y a 2h" },
+        { action: "Téléphone", value: "+223 77 111 22 33", time: "Il y a 2h" },
+        { action: "Email", value: "contact@go-up.ml", time: "Il y a 2h" },
+        { action: "Site web", value: "www.go-up.ml", time: "Il y a 2h" }
+      ],
+      responsable: [
+        { action: "Nom", value: "Fatoumata Coulibaly", time: "Il y a 2h" },
+        { action: "Fonction", value: "Directrice régionale", time: "Il y a 2h" },
+        { action: "Téléphone", value: "+223 77 888 99 00", time: "Il y a 2h" },
+        { action: "Email", value: "fatoumata@go-up.ml", time: "Il y a 2h" }
+      ],
+      statistiques: [
+        { action: "Chauffeurs", value: "800", time: "Il y a 2h" },
+        { action: "Clients", value: "10000", time: "Il y a 2h" },
+        { action: "Courses", value: "25000", time: "Il y a 2h" },
+        { action: "Revenus", value: "80 M FCFA", time: "Il y a 2h" }
+      ],
+      statut: [
+      {
+        title: "Chauffeurs",
+        value: 1200,
+        change: 8.2,
+        changeType: "increase"
+      },
+      {
+        title: "Clients",
+        value: "1500",
+        change: 12.5,
+        changeType: "increase"
+      },
+      {
+        title: "Revenue",
+        value: "€45.8M",
+        change: 15.3,
+        changeType: "increase"
+      },
+      {
+        title: "Course",
+        value: "30",
+        change: 0.1,
+        changeType: "increase"
+      }
+    ],
+    chartDataa: [
+      { name: "France", users: 450000, revenue: 12500000, trips: 85000 },
+      { name: "Allemagne", users: 380000, revenue: 9800000, trips: 72000 },
+      { name: "Espagne", users: 320000, revenue: 8200000, trips: 63000 },
+      { name: "Italie", users: 290000, revenue: 7500000, trips: 58000 },
+      { name: "UK", users: 410000, revenue: 11200000, trips: 78000 },
+      { name: "Pays-Bas", users: 180000, revenue: 4800000, trips: 35000 }
+    ],
+    }
+  };
+
+
+  
+
+
   return {
     stats: [
       {
@@ -83,11 +220,15 @@ function getSuperAdminData(): DashboardData {
       { action: "Mise à jour serveur", status: "Complété", time: "Il y a 4h" },
       { action: "Rapport mensuel généré", type: "Financier", time: "Il y a 6h" }
     ],
+    
+
     kpis: [
       { label: "Taux de satisfaction", value: 96.2, unit: "%" },
       { label: "Temps de réponse moyen", value: 1.8, unit: "s" },
       { label: "Croissance mensuelle", value: 12.5, unit: "%" }
-    ]
+    ],
+    ...orgs[key]
+  
   };
 }
 

@@ -11,7 +11,8 @@ export const superAdminNavigation: NavItem[] = [
   {
     title: 'Régions',
     path: '/master/regions',
-    icon: Globe
+    icon: Globe,
+    
   },
   {
     title: 'Utilisateurs Globaux',

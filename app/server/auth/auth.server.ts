@@ -1,6 +1,7 @@
 import type { LoaderFunctionArgs } from "react-router";
 import { getUserFromSession, requireUserId } from "./session.server";
-import type { UserRole } from "../types/navigation";
+import type { UserRole } from "~/types/navigation";
+
 
 /**
  * Loader pour protéger les routes et vérifier les rôles

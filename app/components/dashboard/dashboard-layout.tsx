@@ -5,7 +5,7 @@ import { DashboardSkeleton } from "../loading/dashboard-skeleton";
 import { ErrorBoundary } from "../ui/error-boundary";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import type { UserRole } from "../../types/navigation";
-
+ 
 interface DashboardLayoutProps {
   title: string;
   role: UserRole;

@@ -48,7 +48,7 @@ export function DashboardCharts({ role, data }: DashboardChartsProps) {
 function SuperAdminCharts({ data }: { data: ChartData[] }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <ChartWrapper title="Utilisateurs par Région" description="Répartition des utilisateurs actifs" variant="primary">
+      <ChartWrapper title="Utilisateurs de la region" description="Répartition des utilisateurs actifs" variant="primary">
         <ResponsiveContainer width="100%" height={320}>
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -69,7 +69,7 @@ function SuperAdminCharts({ data }: { data: ChartData[] }) {
         </ResponsiveContainer>
       </ChartWrapper>
 
-      <ChartWrapper title="Revenus par Région" description="Revenus mensuels par région" variant="success">
+      <ChartWrapper title="Revenus de la region" description="Revenus mensuels par région" variant="success">
         <ResponsiveContainer width="100%" height={320}>
           <AreaChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />

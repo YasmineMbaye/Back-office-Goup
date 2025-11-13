@@ -1,5 +1,6 @@
-import { redirect } from 'react-router';
+import { redirect, redirectDocument } from 'react-router';
 import { getCurrencyByCode } from '../data/currency.server';
+import type { Route } from '../../+types/root';
 
 export async function setCurrencyAction({ request }: { request: Request }) {
   const formData = await request.formData();
@@ -19,3 +20,43 @@ export async function setCurrencyAction({ request }: { request: Request }) {
   const referer = request.headers.get('referer') || '/';
   return redirect(referer);
 }
+
+
+export const formdialog = async ({ request }: Route.ActionArgs) => {
+  let formData = await request.formData();
+  console.log("✅ Données reçues :", Object.fromEntries(formData.entries()));
+   
+  return redirectDocument("/master/regions")
+// return redirect("master/regions");
+};
+ 
+export const formdialoguser = async ({ request }: Route.ActionArgs) => {
+  let formData = await request.formData();
+  console.log("✅ Données reçues :", Object.fromEntries(formData.entries()));
+   
+  return redirectDocument("/master/users")
+// return redirect("master/regions");
+};
+export const formdialogpersonel = async ({ request }: Route.ActionArgs) => {
+  let formData = await request.formData();
+  console.log("✅ Données reçues :", Object.fromEntries(formData.entries()));
+   
+  return redirectDocument("/admin/personnel")
+// return redirect("master/regions");
+};
+
+export const formdialogroledroit = async ({ request }: Route.ActionArgs) => {
+  let formData = await request.formData();
+  console.log("✅ Données reçues :", Object.fromEntries(formData.entries()));
+   
+  return redirectDocument("/admin/roles")
+// return redirect("master/regions");
+};
+
+export const formdialogchauffeur = async ({ request }: Route.ActionArgs) => {
+  let formData = await request.formData();
+  console.log("✅ Données reçues :", Object.fromEntries(formData.entries()));
+   
+  return redirectDocument("/personnel/drivers")
+// return redirect("master/regions");
+};

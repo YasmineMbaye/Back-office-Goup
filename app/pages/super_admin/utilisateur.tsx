@@ -2,7 +2,9 @@ import { getDashboardData } from "../../server/data/dashboard.server";
 import { requireSuperAdmin } from "../../server/auth/auth.server";
 import { DashboardLayout } from "../../components/dashboard/dashboard-layout";
 import { RegionLayout } from "~/components/superadmin/Region-layout";
-import { formdialog as action} from "~/server/actions/currency.server";
+import {Utilisateurlayout} from "~/components/superadmin/Utilisateurlayout"
+import { formdialoguser as action} from "~/server/actions/currency.server";
+
 export {action}
 export async function loader({ request }: { request: Request }) {
   const { user } = await requireSuperAdmin({ request });
@@ -15,5 +17,6 @@ export async function loader({ request }: { request: Request }) {
 }
 
 export default function Home() {
-  return <RegionLayout title="Régions" role="super_admin" />;
+  return   <Utilisateurlayout title="Utilisateur" role="super_admin"/>         
+  
 }
