@@ -11,21 +11,9 @@ export default function Home() {
     <div className="p-6  ">
       <div className="">
         <div className="flex justify-between">
-          <div className="font-bold text-xl mb-6">Ajouter un role</div>
+          <div className="font-bold text-xl mb-6">Nouveau Role</div>
           <div className="flex gap-4 border-gray-200 mb-4">
-            <button
-              type="button"
-              onClick={() => close()}
-              className="px-4 border rounded-lg text-gray-600 hover:bg-gray-100"
-            >
-              Annuler
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800"
-            >
-              Enregistrer
-            </button>
+            
           </div>
         </div>
         <div>
@@ -93,7 +81,7 @@ export default function Home() {
             </div>
 
             {/* Boutons */}
-            {/* <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">
+             <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">
               <button
                 type="button"
                 onClick={() => close()}
@@ -107,7 +95,7 @@ export default function Home() {
               >
                 Enregistrer
               </button>
-            </div> */}
+            </div> 
           </Form>
         </div>
       </div>

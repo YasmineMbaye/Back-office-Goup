@@ -9,7 +9,7 @@ import {
 import { ErrorBoundary } from "../ui/error-boundary";
 
 import type { UserRole } from "../../types/navigation";
-import { Plus, Search, UserRoundPlus } from "lucide-react";
+import { Plus, Search, UserRoundPlus, Cog  } from "lucide-react";
 import { Form } from "react-router";
 import { useRef } from "react";
 import type { Route } from "../../+types/root";
@@ -43,7 +43,7 @@ export function RegionLayout({ title, role }: DashboardLayoutProps) {
         <div>
           <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
           <p className="text-lg text-gray-600 mt-2">
-            Bienvenue dans la gestion des régions
+            Liste des regions
           </p>
         </div>
 
@@ -55,57 +55,77 @@ export function RegionLayout({ title, role }: DashboardLayoutProps) {
               </div>
               <input
                 type="text"
-                placeholder="Rechercher une organisation..."
+                placeholder="Rechercher une region..."
                 className="  rounded-r-sm px-2  bg-white outline-gray-400"
               />
             </div>
 
             <div className=" bg-black text-white px-2  flex items-center rounded cursor-pointer">
-              <button onClick={ouvrirModal}>
+              <button onClick={() => navigate("/master/regions/configuration")} >
                 {" "}
                 <div className="flex cursor-pointer ">
                   <div>
-                    <Plus className="" />
+                    <Cog  className="" />
                   </div>{" "}
-                  <div> Ajouter organisation</div>
+                  <div> Configuration</div>
                 </div>{" "}
               </button>
             </div>
           </div>
         </div>
 
-        <div>
-          <table className="  rounded-lg overflow-hidden  min-w-full ">
-            <thead className=" bg-gray-200 font-bold">
-              <tr className="border border-gray-300 ">
-                <th className=" px-4 py-2 text-left"></th>
-                <th className=" px-4 py-2 text-left ">Organisation</th>
-                <th className=" px-4 py-2 text-left">Pays</th>
-                <th className=" px-4 py-2 text-left">Status</th>
+        <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm bg-white">
+          <table className="min-w-full">
+            <thead className="bg-gray-100 text-gray-600 text-sm uppercase tracking-wider">
+              <tr >
+                <th className="px-6 py-4 text-left font-bold">ID</th>
+                <th className="px-6 py-4 text-left font-bold">region</th>
+                <th className="px-6 py-4 text-left font-bold">organisation</th>
+                <th className="px-6 py-4 text-left font-bold">Date d'activation</th>
+                <th className="px-6 py-4 text-left font-bold">Status</th>
+                <th className="px-6 py-4  font-bold text-center">employers</th>
                 
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-gray-700">
               <tr
                 className="bg-white hover:bg-gray-50 cursor-pointer border border-gray-200 text-gray-600"
                 onClick={() => navigate("/master/regions/sn")}
               >
-                <td className=" px-4 py-2 text-black font-bold">1</td>
-                <td className=" px-4 py-2"> Go-up-Sn </td>
-                <td className=" px-4 py-2"> Senegal</td>
-                <td className=" px-4 py-2  "><div className="bg-green-500 text-white w-14 rounded-2xl px-2">Actif </div></td>
-       
+                <td className="px-6 py-5 font-bold">sn221</td>
+                <td className=" px-6 py-5"> West-Africa </td>
+                <td className=" px-6 py-5"> GoUp-SN</td>
+                <td className=" px-6 py-5"> 17-11-22</td>
+                <td className=" px-6 py-5  "><div className="bg-green-300 text-green-700  w-14 rounded-2xl px-2">Actif </div></td>
+                <td className=" px-6 py-5 text-fuchsia-800 text-center"> 30</td>
+                
+              </tr>
+               <tr
+                className="bg-white hover:bg-gray-50 cursor-pointer border border-gray-300 text-gray-600 "
+                onClick={() => navigate("/master/regions/ml")}
+              >
+               <td className="px-6 py-5 font-bold">fr21</td>
+                <td className=" px-6 py-5"> Ile-de-France </td>
+                <td className=" px-6 py-5"> GoUp-Fr</td>
+                <td className=" px-6 py-5"> 17-11-22</td>
+                <td className=" px-6 py-5  "><div className="bg-red-300 text-red-700 w-16 rounded-2xl px-2">Inactif </div></td>
+                <td className=" px-6 py-5 text-center"> 0</td> 
+                
+                
                 
               </tr>
               <tr
                 className="bg-white hover:bg-gray-50 cursor-pointer border border-gray-300 text-gray-600 "
                 onClick={() => navigate("/master/regions/ml")}
               >
-                <td className=" px-4 py-2 text-black font-bold">2</td>
-                <td className=" px-4 py-2">Go-up-Mali</td>
-                <td className=" px-4 py-2">Mali</td>
-                <td className=" px-4 py-2  "><div className="bg-red-600 text-white w-17 rounded-2xl px-2">Inactif </div></td>
-            
+               <td className="px-6 py-5 font-bold">ml31</td>
+                <td className=" px-6 py-5"> West-Africa </td>
+                <td className=" px-6 py-5"> GoUp-Ml</td>
+                <td className=" px-6 py-5"> 17-11-22</td>
+                <td className=" px-6 py-5  "><div className="bg-red-300 text-red-700 w-16 rounded-2xl px-2">Inactif </div></td>
+                <td className=" px-6 py-5 text-center"> 0</td> 
+                
+                
                 
               </tr>
             </tbody>

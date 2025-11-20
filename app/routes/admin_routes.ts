@@ -9,7 +9,7 @@ export default [
             route("roles", "./pages/admin/role-droit.tsx"),
           
             route("drivers", "./pages/admin/chauffeur.tsx"),
-            route("roles/ajoutrole", "./pages/admin/ajoutrole.tsx"),
+            route("roles/new", "./pages/admin/ajoutrole.tsx"),
         ]
     )
  ] satisfies RouteConfig;

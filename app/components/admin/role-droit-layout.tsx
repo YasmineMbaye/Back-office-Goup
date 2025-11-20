@@ -146,7 +146,7 @@ const filteredRoles = roles.filter((role) =>
                    <div className=" bg-black text-white px-2  flex items-center rounded cursor-pointer">
                      
                     
-                      <button onClick={() => navigate("/admin/roles/ajoutrole")} > <div className="flex cursor-pointer "><div><Plus className="" /></div>  <div> Ajouter un role</div></div> </button>
+                      <button onClick={() => navigate("/admin/roles/new")} > <div className="flex cursor-pointer "><div><Plus className="" /></div>  <div> Ajouter un role</div></div> </button>
                       
                     
                    </div>
@@ -161,11 +161,11 @@ const filteredRoles = roles.filter((role) =>
       <table className="min-w-full">
         <thead className="bg-gray-100 text-gray-600 text-sm uppercase tracking-wider">
           <tr>
-            <th className="px-6 py-4 text-left font-semibold">Tags</th>
-            <th className="px-6 py-4 text-left font-semibold">Role name</th>
-            <th className="px-6 py-4 text-left font-semibold w-50">Description</th>
-            <th className="px-6 py-4 text-center font-semibold">Droits</th>
-            <th className="px-6 py-4 text-center font-semibold">Users</th>
+            <th className="px-6 py-4 text-left font-bold">Tags</th>
+            <th className="px-6 py-4 text-left font-bold">Role name</th>
+            <th className="px-6 py-4 text-left font-bold w-50">Description</th>
+            <th className="px-6 py-4 text-center font-bold">Droits</th>
+            <th className="px-6 py-4 text-center font-bold">Users</th>
           </tr>
         </thead>
 
